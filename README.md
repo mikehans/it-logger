@@ -8,6 +8,9 @@ As the project uses the older connect() react-redux style, I'll update to use ho
 
 [X] Add the techs section without the videos using connect() - add and delete techs
 
-[ ] Modify the select box of techs used in the Create Log form to fetch from the techs
+[X] Modify the select box of techs used in the Create Log form to fetch from the techs
+ - presently an issue where a GET request to /techs is issued twice on load. The second returns a 304 but it's unnecessary
+   - once in AddLogModal
+   - once in TechListModal
 
 [ ] Modify the application to use React Hooks instead of connect()

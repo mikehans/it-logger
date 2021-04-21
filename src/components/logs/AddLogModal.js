@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import M from "materialize-css/dist/js/materialize.min.js";
 import PropTypes from 'prop-types';
 import { addLog } from '../../actions/logActions'
+import { getTechs } from "../../actions/techsActions";
 
-const AddLogModal = ({ addLog }) => {
+const AddLogModal = ({ technicianList, addLog, getTechs }) => {
     const [message, setMessage] = useState('');
     const [attention, setAttention] = useState(false);
     const [tech, setTech] = useState('');
+
+    const { techs, loading } = technicianList;
+
+    useEffect(() => {
+        getTechs();
+        //eslint-disable-next-line
+    }, []);
 
     const onSubmit = (e) => {
         if (message === '' || tech === '') {
@@ -21,7 +29,7 @@ const AddLogModal = ({ addLog }) => {
             };
 
             addLog(newLog);
-            M.toast({html:`Log added by ${tech}`});
+            M.toast({ html: `Log added by ${tech}` });
             // clear fields
             setMessage('');
             setTech('');
@@ -54,9 +62,14 @@ const AddLogModal = ({ addLog }) => {
                             onChange={e => setTech(e.target.value)}
                         >
                             <option value="" disabled>Select Technician</option>
-                            <option value="John Doe">John Doe</option>
+                            {!loading && techs && techs.map(t => {
+                                return (<option value={`${t.firstName} ${t.lastName}`} key={t.id}>
+                                            {`${t.firstName} ${t.lastName}`}
+                                        </option>)
+                            })}
+                            {/* <option value="John Doe">John Doe</option>
                             <option value="Sam Smith">Sam Smith</option>
-                            <option value="Billy The-Kid">Billy The-Kid</option>
+                            <option value="Billy The-Kid">Billy The-Kid</option> */}
                         </select>
                     </div>
                 </div>
@@ -90,7 +103,13 @@ const modalStyle = {
 };
 
 AddLogModal.propTypes = {
-    addLog: PropTypes.func.isRequired
+    technicianList: PropTypes.object,
+    addLog: PropTypes.func.isRequired,
+    getTechs: PropTypes.func.isRequired
 }
 
-export default connect(null, {addLog})(AddLogModal);
+const mapStateToProps = (state) => ({
+    technicianList: state.techs
+});
+
+export default connect(mapStateToProps, { addLog, getTechs })(AddLogModal);

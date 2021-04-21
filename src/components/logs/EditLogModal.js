@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import M from "materialize-css/dist/js/materialize.min.js";
 import { updateLog } from '../../actions/logActions';
+import { getTechs } from "../../actions/techsActions";
 
-const EditLogModal = ({ current, updateLog }) => {
+const EditLogModal = ({ technicianList, current, updateLog }) => {
     const [message, setMessage] = useState('');
     const [attention, setAttention] = useState(false);
     const [tech, setTech] = useState('');
+
+    const {techs, loading} = technicianList;
 
     useEffect(() => {
         if (current) {
@@ -16,6 +19,11 @@ const EditLogModal = ({ current, updateLog }) => {
             setTech(current.tech);
         }
     }, [current]);
+
+    useEffect(() => {
+        getTechs();
+        //eslint-disable-next-line
+    }, []);
 
     const onSubmit = (e) => {
         if (message === '' || tech === '') {
@@ -30,7 +38,7 @@ const EditLogModal = ({ current, updateLog }) => {
             }
 
             updateLog(updatedLog);
-            M.toast({html: `Log updated by ${tech}`});
+            M.toast({ html: `Log updated by ${tech}` });
             // clear fields
             setMessage('');
             setTech('');
@@ -65,9 +73,11 @@ const EditLogModal = ({ current, updateLog }) => {
                             onChange={e => setTech(e.target.value)}
                         >
                             <option value="" disabled>Select Technician</option>
-                            <option value="John Doe">John Doe</option>
-                            <option value="Sam Smith">Sam Smith</option>
-                            <option value="Billy The-Kid">Billy The-Kid</option>
+                            {!loading && techs && techs.map(t => {
+                                return (<option value={`${t.firstName} ${t.lastName}`} key={t.id}>
+                                    {`${t.firstName} ${t.lastName}`}
+                                </option>)
+                            })}
                         </select>
                     </div>
                 </div>
@@ -102,11 +112,13 @@ const modalStyle = {
 
 EditLogModal.propTypes = {
     current: PropTypes.object,
-    updateLog: PropTypes.func.isRequired
+    updateLog: PropTypes.func.isRequired,
+    getTechs: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-    current: state.log.current
+    current: state.log.current,
+    technicianList: state.techs
 });
 
-export default connect(mapStateToProps, { updateLog })(EditLogModal);
+export default connect(mapStateToProps, { updateLog, getTechs })(EditLogModal);
