@@ -1,42 +1,42 @@
 {
-    "logs": [
-        {
-            "id": 1,
-            "message": "Message here",
-            "attention": false,
-            "date": "1 APR 2021",
-            "tech": "Sam Smith"
-        },
-        {
-            "id": 2,
-            "message": "Message there",
-            "attention": true,
-            "date": "2 APR 2021",
-            "tech": "John Doe"
-        },
-        {
-            "id": 3,
-            "message": "Message everywhere",
-            "attention": false,
-            "date": "3 APR 2021",
-            "tech": "Billy The-Kid"
-        }
-    ],
-    "techs": [
-        {
-            "id": 1,
-            "firstName": "Sam",
-            "lastName": "Smith"
-        },
-        {
-            "id": 2,
-            "firstName": "John",
-            "lastName": "Doe"
-        },        
-        {
-            "id": 3,
-            "firstName": "Billy",
-            "lastName": "The-Kid"
-        }
-    ]
+  "logs": [
+    {
+      "message": "Test me Redux 1",
+      "attention": false,
+      "tech": "John Doe",
+      "date": "2021-04-21T06:07:09.812Z",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "message": "Test me again again",
+      "attention": false,
+      "tech": "Billy The-Kid",
+      "date": "2021-04-21T07:27:12.473Z"
+    },
+    {
+      "message": "another one",
+      "attention": false,
+      "tech": "Billy The-Kid",
+      "date": "2021-04-21T06:42:56.979Z",
+      "id": 3
+    }
+  ],
+  "techs": [
+    {
+      "id": 1,
+      "firstName": "Sam",
+      "lastName": "Smith"
+    },
+    {
+      "id": 2,
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "id": 3,
+      "firstName": "Billy",
+      "lastName": "The-Kid"
+    }
+  ]
 }

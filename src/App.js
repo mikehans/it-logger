@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Provider } from "react-redux";
 import store from "./store";
-import { Searchbar } from './components/layout/Searchbar';
-import { Logs } from "./components/logs/Logs";
+import Searchbar from './components/layout/Searchbar';
+import Logs from "./components/logs/Logs";
 import { AddBtn } from "./components/layout/AddBtn";
-import { AddLogModal } from "./components/logs/AddLogModal";
-import { EditLogModal } from "./components/logs/EditLogModal";
-import { AddTechModal } from "./components/techs/AddTechModal"; 
+import AddLogModal from "./components/logs/AddLogModal";
+import EditLogModal from "./components/logs/EditLogModal";
+import { AddTechModal } from "./components/techs/AddTechModal";
 import { TechListModal } from "./components/techs/TechListModal";
 
 import './App.css';
