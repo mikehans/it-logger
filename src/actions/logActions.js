@@ -38,7 +38,7 @@ export const getLogs = () => async dispatch => {
         dispatch({
             type: GET_LOGS,
             payload: data
-        })
+        });
     } catch (error) {
         dispatch({
             type: LOGS_ERROR,

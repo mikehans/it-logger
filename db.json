@@ -1,25 +1,25 @@
 {
   "logs": [
     {
+      "id": 1,
       "message": "Test me Redux 1",
-      "attention": false,
-      "tech": "John Doe",
-      "date": "2021-04-21T06:07:09.812Z",
-      "id": 1
+      "attention": true,
+      "tech": "Sam Smith",
+      "date": "2021-04-21T11:35:58.373Z"
     },
     {
       "id": 2,
       "message": "Test me again again",
       "attention": false,
-      "tech": "Billy The-Kid",
-      "date": "2021-04-21T07:27:12.473Z"
+      "tech": "John Doe",
+      "date": "2021-04-21T11:36:24.981Z"
     },
     {
+      "id": 3,
       "message": "another one",
       "attention": false,
       "tech": "Billy The-Kid",
-      "date": "2021-04-21T06:42:56.979Z",
-      "id": 3
+      "date": "2021-04-21T11:36:15.068Z"
     }
   ],
   "techs": [

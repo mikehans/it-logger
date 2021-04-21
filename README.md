@@ -6,6 +6,8 @@ I've followed through sections 1 & 2 and will do section 3 without the video.
 As the project uses the older connect() react-redux style, I'll update to use hooks instead.
 ## TODOs
 
-[ ] Add the techs section without the videos using connect()
+[X] Add the techs section without the videos using connect() - add and delete techs
+
+[ ] Modify the select box of techs used in the Create Log form to fetch from the techs
 
 [ ] Modify the application to use React Hooks instead of connect()
